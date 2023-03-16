@@ -1,4 +1,4 @@
-// ❗️❗️❗️ Оператора розгалудження
+// ❗️❗️❗️ Оператори розгалудження
 
 // const number1 = Number(prompt("Enter a number 1, please"));
 // console.log(number1);
