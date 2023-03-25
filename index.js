@@ -1,9 +1,9 @@
 // ❗️❗️❗️ Оператори розгалудження
 
-// const number1 = Number(prompt("Enter a number 1, please"));
-// console.log(number1);
-// const number2 = Number(prompt("Enter a number 2, please"));
-// console.log(number2);
+const number1 = Number(prompt("Enter a number 1, please"));
+ console.log(number1);
+const number2 = Number(prompt("Enter a number 2, please"));
+ console.log(number2);
 
 // if(number1 > number2) {
 //     console.log('I am here')
