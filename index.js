@@ -1,246 +1,182 @@
-// ❗️❗️❗️ Spread
-
-// const a = ['a', 'b', 'c'];
-// const b = [1, 2, 3];
-// const c = [[1, 2], 'qwe', 1234]
-// const d = [...a, 100, 200, 300, ...b, ...c[0], c[1], c[2]];
-// // const e = [a, b, c]
-
-// console.log(d)
-
-// const obj1 = {a: 1, b: 2};
-// const obj2 = {c: 3, d: 4}
-// const obj3 = {...obj1, ...obj2}
-// console.log(obj3)
-
-// const obj1 = {a: 1, b: 2};
-// const obj2 = {a: 0, c: 3, d: 4}
-// // const obj3 = {...obj2, ...obj1}
-// const obj3 = {...obj2, ...obj1, a: 5, e: 9}
-// console.log(obj3)
-
-// ❗️❗️❗️ Rest
-
-// function q(...otherArgs) {
-//   console.log(otherArgs); // Масив інших аргументів
+// function a(onSuccess, onUnsuccess) {
+//   console.log(onSuccess)
+//   console.log(onUnsuccess)
+//   const mark = Number(prompt('What is your mark?'))
+//   if (mark >= 10) {
+//    onSuccess()
+//   } else {
+//    onUnsuccess()
+//   }
 // }
 
-// q(1, 2);
-// q(1, 2, 3);
-// q(1, 2, 3, 4, 5, 6, 7);
-
-// function w(a, b, c, ...otherArgs) {
-
-//   console.log(a);
-//   console.log(b);
-//   console.log(c);
-//   console.log(otherArgs); // Масив інших аргументів
-
-//   const array = [...otherArgs]
-//   console.log(array)
-// }
-// // w(1, 2, 3);
-// w(1, 2, 3, 4, 5, 6, 7);
-
-// function isIncluded(num, ...array) {
-//   console.log(array.includes(num))
-//   console.log(array)
-// }
-// isIncluded(1, 2, 3, 5, 6, 8, 5)
-
-// function isIncluded(...array) {
-//   const newArray = array.slice(1)
-//   console.log(newArray)
-//   console.log(newArray.includes(array[0]))
-// }
-// isIncluded(1, 2, 3, 5, 6, 8, 5)
-
-// function isIncluded(...array) {
-//   console.log(array);
-//   const num = array.pop();
-//   console.log(array);
-//   console.log(num);
-//   console.log(array.includes(num));
-// }
-// isIncluded(5, 2, 3, 5, 6, 8, 10);
-
-// ❗️❗️❗️ Деструктуризація
-
-// const book = {
-//   title: "The Last Kingdom",
-//   author: "Bernard Cornwell",
-//   genres: ["historical prose", "adventure"],
-//   isPublic: true,
-//   rating: 8.38,
-//   price: "3$",
-//   coverImage: "bkjbkbh",
-// };
-// const { price, title, ...data } = book;
-
-// console.log(book)
-// console.log(price)
-// console.log(data)
-
-// const { author} = book;
-
-// // console.log(book.author)
-// // console.log(book['author'])
-// // console.log(author)
-
-// Деструктуризуємо
-
-// const { title, author, isPublic, rating, coverImage = 'qwerty' } = book;
-
-// console.log(coverImage)
-
-// const { title, author, isPublic, rating: votes, coverImage, price='5$' } = book;
-// console.log(rating)
-
-// const books = [
-//   {
-//     title: "The Last Kingdom",
-//     author: "Bernard Cornwell",
-//     rating: 8.38,
-//   },
-//   {
-//     title: "На березі спокійних вод",
-//     author: "Роберт Шеклі",
-//     rating: 8.51,
-//   },
-// ];
-
-// for (const book of books) {
-
-// const {title, author, rating} = book
-//   console.log(title);
-//   console.log(author);
-//   console.log(rating);
+// function b() {
+//   alert('It is great!')
 // }
 
-// for (const {title, author, rating} of books) {
-//   console.log(title);
-//   console.log(author);
-//   console.log(rating);
+// function c() {
+//   alert('It is excellent mark!')
 // }
 
-// const user = {
-//   name: "Jacques Gluke",
-//   tag: "jgluke",
-//   stats: {
-//     followers: 5603,
-//     views: 4827,
-//     likes: 1308,
-//     a: {
-//       b: 0,
-//       c: {
-//         d: "bkjbkjbnlkbklj",
-//       },
+// function d() {
+//   alert('It is bad mark!')
+// }
+
+// a(b, d)
+
+// a(c, d)
+
+// const users = [
+//     {
+//       id: "701b29c3-b35d-4cf1-a5f6-8b12b29a5081",
+//       name: "Moore Hensley",
+//       email: "moorehensley@indexia.com",
+//       eyeColor: "blue",
+//       friends: ["Sharron Pace"],
+//       isActive: false,
+//       balance: 2811,
+//       skills: ["ipsum", "lorem"],
+//       gender: "male",
+//       age: 37,
 //     },
-//   },
-// };
-
-// const {
-//   name,
-//   tag,
-//   stats: {
-//     followers,
-//     views,
-//     likes,
-//     a: {
-//       b,
-//       c: { d },
+//     {
+//       id: "7a3cbd18-57a1-4534-8e12-1caad921bda1",
+//       name: "Sharlene Bush",
+//       email: "sharlenebush@tubesys.com",
+//       eyeColor: "blue",
+//       friends: ["Briana Decker", "Sharron Pace"],
+//       isActive: true,
+//       balance: 3821,
+//       skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+//       gender: "female",
+//       age: 34,
 //     },
-//   },
-// } = user;
-
-// console.log(d);
-// console.log(followers)
-// console.log(likes)
-
-// const {
-//   stats: {
-//     a: {
-//       c: { d },
+//     {
+//       id: "88beb2f3-e4c2-49f3-a0a0-ecf957a95af3",
+//       name: "Ross Vazquez",
+//       email: "rossvazquez@xinware.com",
+//       eyeColor: "green",
+//       friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//       isActive: false,
+//       balance: 3793,
+//       skills: ["nulla", "anim", "proident", "ipsum", "elit"],
+//       gender: "male",
+//       age: 24,
 //     },
-//   },
-// } = user;
+//     {
+//       id: "249b6175-5c30-44c6-b154-f120923736f5",
+//       name: "Elma Head",
+//       email: "elmahead@omatom.com",
+//       eyeColor: "green",
+//       friends: ["Goldie Gentry", "Aisha Tran"],
+//       isActive: true,
+//       balance: 2278,
+//       skills: ["adipisicing", "irure", "velit"],
+//       gender: "female",
+//       age: 21,
+//     },
+//     {
+//       id: "334f8cb3-eb04-45e6-abf4-4935dd439b70",
+//       name: "Carey Barr",
+//       email: "careybarr@nurali.com",
+//       eyeColor: "blue",
+//       friends: ["Jordan Sampson", "Eddie Strong"],
+//       isActive: true,
+//       balance: 3951,
+//       skills: ["ex", "culpa", "nostrud"],
+//       gender: "male",
+//       age: 27,
+//     },
+//     {
+//       id: "150b00fb-dd82-427d-9faf-2879ea87c695",
+//       name: "Blackburn Dotson",
+//       email: "blackburndotson@furnigeer.com",
+//       eyeColor: "brown",
+//       friends: ["Jacklyn Lucas", "Linda Chapman"],
+//       isActive: false,
+//       balance: 1498,
+//       skills: ["non", "amet", "ipsum"],
+//       gender: "male",
+//       age: 38,
+//     },
+//     {
+//       id: "e1bf46ab-7168-491e-925e-f01e21394812",
+//       name: "Sheree Anthony",
+//       email: "shereeanthony@kog.com",
+//       eyeColor: "brown",
+//       friends: ["Goldie Gentry", "Briana Decker"],
+//       isActive: true,
+//       balance: 2764,
+//       skills: ["lorem", "veniam", "culpa"],
+//       gender: "female",
+//       age: 39,
+//     },
+//   ];
+  
+//   const newUsers = []
+  
+//   users.forEach(function(user, index) {
+//     // console.log('N:', index + 1)
+//     // console.log(user)
+//     const {name, age, ...restProps} = user;
+//     // console.log(`${index + 1} - ${name} - ${age}`)
+//     // console.log(restProps)
+//     newUsers.push(restProps)
+//   })
+  
+//   console.log(newUsers)
+  
+//   const classicAdd = function (a, b, c) {
+//     console.log(arguments)
+//     return a + b + c;
+//   };
 
-// console.log(d);
+//   classicAdd(1, 2, 3)
+  
+//   const arrowAdd1 = (a, b, c) => {
+//     console.log(arguments)
+//     return a + b + c;
+//   };
 
-// const rgb = [200, 255, 100];
-// const [red, green, blue] = rgb;
-
-// console.log(green)
-
-// let a
-// let b
-// a = 5
-// b = 10
-// console.log(a)
-// console.log(b)
-
-// let a, b
-// a = 5
-// b = 10
-// console.log(a)
-// console.log(b)
-
-
-// ❗️❗️❗️ Задача
-
-// const car1 = {
-//   brand: "BMW",
-//   model: "700",
-//   a: "red",
-//   maxSpeed: 240,
-//   isNew: true,
-//   dimensions: {
-//     weight: 2000,
-//     height: 150,
-//     length: 4.2,
-//   },
-// };
-
-// const car2 = {
-//   brand: "BMW",
-//   model: "700",
-//   a: "red",
-//   maxSpeed: 240,
-//   isNew: true,
-//   dimensions: {
-//     height: 150,
-//     length: 4.2,
-//   },
-// };
-
-// function createMessage(car) {
-//   const message = `
-//   Color: ${car.a}
-//   Max speed: ${car.maxSpeed}
-//   Is new: ${car.isNew}
-//   Weight: ${car.dimensions.weight}
-//   `;
-//   console.log(message);
-// }
-
-// function createMessage({
-//   dimensions: {
-//     weight = 'No info',
-//     height = "No info",
-//     length = "No info"
-//   },
-//   a: color = 'No info',
-//   maxSpeed = "No info",
-//   isNew = "No info",
-
-// }) {
-//   const message = `
-//   Color: ${color}
-//   Max speed: ${maxSpeed}
-//   Is new: ${isNew}
-//   Weight: ${weight}
-//   `;
-//   console.log(message);
-// }
-
-// createMessage(car2);
+//   arrowAdd1(1, 2, 3)
+  
+//   const arrowAdd2 = (a, b, c) => a + b + c;
+  
+  const mathOperations = (num1, num2, callback1, callback2) => {
+    if (num1 > num2) {
+      const result = callback1(num1, num2);
+      return result;
+    } else if (num2 > num1) {
+      return callback2(num1, num2);
+    } else {
+      return "Enter another numbers";
+    }
+  };
+  
+//   const add = (num1, num2) => num1 + num2;
+//   const substract = (num1, num2) => num2 - num1;
+  
+//   const multiply = (num1, num2) => num1 * num2;
+//   const divide = (num1, num2) => num2 / num1;
+  
+//   console.log(mathOperations(10, 20, add, substract)); // 10
+//   console.log(mathOperations(100, 20, add, substract)); // 120
+//   console.log(mathOperations(200, 200, add, substract)); // 'Enter another numbers'
+//   console.log(mathOperations(10, 20, multiply, divide)); //2
+//   console.log(mathOperations(100, 20, multiply, divide)); //2000
+  
+//   console.log(mathOperations(10, 20, (num1, num2) => num1 + num2, (num1, num2) => num2 - num1)); // 10
+  
+//   const newUsers = []
+  
+//   users.forEach((user, index) => {
+//     const {name, age, ...restProps} = user
+//     console.log(`${index + 1} - ${name} - ${age}`)
+//     newUsers.push(restProps)
+//   })
+  
+//   users.forEach(({name, age, ...restProps}, index) => {
+//     console.log(`${index + 1} - ${name} - ${age}`)
+//     newUsers.push(restProps)
+//   })
+  
+  // console.log(newUsers)
