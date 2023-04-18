@@ -1,132 +1,55 @@
-// const inventory = {
-//   items: ['Knife', 'Gas mask'],
-//   add(itemName) {
-//     console.log(`Adding ${itemName} to inventory`);
 
-//     this.items.push(itemName);
-//   },
-//   remove(itemName) {
-//     console.log(`Removing ${itemName} from inventory`);
+// const student = {
+//     name: 'Jhon',
+//     email: 'jhon@gmail.com',
+//     homeworkResults: [],
+//     getName() {
+//        return this.name
+//     },
+//     getEmail() {
+//         console.log(this.email)
+//     },
+//     getHWResults() {
+//         console.log(this.homeworkResults)
+//     },
+//     addHomeworkResults(topic, sucess) {
+//     //   const item = {topic:topic, sucess:sucess}
+//         const item = {topic, sucess}
+//         this.homeworkResults.push(item)
+//     }
+// }
 
-//     this.items = this.items.filter(item => item !== itemName);
-//   },
-// };
-
-// const invokeInventoryAction = function(itemName, action) {
-//   console.log(`Invoking action on ${itemName}`);
-//   action(itemName);
-// };
-
-// invokeInventoryAction('Medkit', inventory.add);
-// // Invoking action on Medkit
-// // Adding Medkit to inventory
-
-// // console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']
-
-// invokeInventoryAction('Gas mask', inventory.remove);
-// // Invoking action on Gas mask
-// // Removing Gas mask from inventory
-
-// // console.log(inventory.items); // ['Knife', 'Medkit']
-
-// // BIND
-
-// const inventory = {
-//   items: ['Knife', 'Gas mask'],
-//   add(itemName) {
-//     console.log(`Adding ${itemName} to inventory`);
-
-//     this.items.push(itemName);
-//   },
-//   remove(itemName) {
-//     console.log(`Removing ${itemName} from inventory`);
-
-//     this.items = this.items.filter(item => item !== itemName);
-//   },
-// };
-
-// const invokeInventoryAction = function (itemName, action) {
-//   console.log(`Invoking action on ${itemName}`);
-//   action(itemName);
-// };
-
-// invokeInventoryAction('Medkit', inventory.add.bind(inventory));
+// console.log(student.getName())
+// student.getEmail()
+// // student.getHWResults()
+// student.addHomeworkResults('HTML/CSS', true)
+// student.getHWResults()
+// student.addHomeworkResults('JS', true)
+// student.getHWResults()
 
 
-// // Invoking action on Medkit
-// // Adding Medkit to inventory
-
-// // console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']
-
-// invokeInventoryAction('Gas mask', inventory.remove.bind(inventory));
-// // // Invoking action on Gas mask
-// // // Removing Gas mask from inventory
-
-// // // console.log(inventory.items); // ['Knife', 'Medkit']
-
-
-// // CALL
-// const inventory = {
-//   items: ['Knife', 'Gas mask'],
-//   add(itemName) {
-//     console.log(`Adding ${itemName} to inventory`);
-
-//     this.items.push(itemName);
-//   },
-//   remove(itemName) {
-//     console.log(`Removing ${itemName} from inventory`);
-
-//     this.items = this.items.filter(item => item !== itemName);
-//   },
-// };
-
-// const invokeInventoryAction = function (itemName, action) {
-//   // console.log(this)
-//   console.log(`Invoking action on ${itemName}`);
-//   action.call(this, itemName);
-// };
-
-// invokeInventoryAction.call(inventory, 'Medkit', inventory.add);
-// // Invoking action on Medkit
-// // Adding Medkit to inventory
-
-// // console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']
-
-// invokeInventoryAction.call(inventory, 'Gas mask', inventory.remove);
-// // Invoking action on Gas mask
-// // Removing Gas mask from inventory
-
-// // console.log(inventory.items); // ['Knife', 'Medkit']
-
-// APPLY
-// const inventory = {
-//   items: ['Knife', 'Gas mask'],
-//   add(itemName) {
-//     console.log(`Adding ${itemName} to inventory`);
-
-//     this.items.push(itemName);
-//   },
-//   remove(itemName) {
-//     console.log(`Removing ${itemName} from inventory`);
-
-//     this.items = this.items.filter(item => item !== itemName);
-//   },
-// };
-
-// const invokeInventoryAction = function (itemName, action) {
-//   console.log(this)
-//   console.log(`Invoking action on ${itemName}`);
-//   action.apply(this, [itemName]);
-// };
-
-// invokeInventoryAction.apply(inventory, ['Medkit', inventory.add]);
-// // Invoking action on Medkit
-// // Adding Medkit to inventory
-
-// // console.log(inventory.items); // ['Knife', 'Gas mask', 'Medkit']
-
-// invokeInventoryAction.apply(inventory, ['Gas mask', inventory.remove]);
-// // Invoking action on Gas mask
-// // Removing Gas mask from inventory
-
-// // console.log(inventory.items); // ['Knife', 'Medkit']
+// const Student = function (name, email) {
+//     const studentName = name;
+//     const studentEmail = email;
+//     const homeworkResults = [];
+  
+//     this.getName = function () {
+//       return studentName;
+//     };
+  
+//     this.getEmail = function () {
+//       return studentEmail;
+//     };
+  
+//     this.getHomeworkResults = function () {
+//       return homeworkResults;
+//     };
+  
+//     this.addHomeworkResult = function (topic, success) {
+//       homeworkResults.push({ topic: topic, success: success });
+//     };
+//   };
+  
+// //   const student1 = new Student('Anna', 'anna@ukr.net')
+//   const student2 = new Student('Oleh', 'oleh@ukr.net')
+//   console.log(student2)
