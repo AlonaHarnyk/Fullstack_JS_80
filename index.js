@@ -1,117 +1,114 @@
-//   const getSums = (array) => array.reduce((acc, num, idx) => idx === 0 ? [num] : [...acc, num + acc[idx-1]], [])
+// const body1 = document.querySelector('body')
+// const body2 = document.body
+// console.log(body2)
 
-// //   const getSums = (array) => array.reduce((acc, num, idx) => {
-// //     console.log('Iteration', idx+1)
-// //     console.log('acc', acc)
-// //     if (idx === 0) {
-// //       return [num]
-// //     } else {
-// //       console.log('last elem', acc[acc.length - 1])
-// //       return [...acc, num + acc[idx - 1]]
-// //     }
+// const elem1 = document.querySelector('#text')
+// console.log(elem1)
 
-// //   }, [])
+// const elem1 = document.querySelector('li')
+// console.log(elem1)
 
-//   console.log(getSums([1, 2, 3, 4, 5]))// [1, 3, 6, 10, 15]
+// const elem2 = document.querySelectorAll('li')
+// console.log(elem2)
 
-// const array = [1, 2, 3, 4, 5]
-// const objects = array.map((el, index) => ({el, index}))
-// console.log(objects)
-// objects.splice(1, 2)
-// console.log(objects)
-// const element = objects.find(({index}) => index === 4).el
-// console.log(element)
+// const elem3 = document.querySelector('li')
+// // // console.log(elem3)
 
-// const foo = arr => {
-//     const newArray = []
-//     console.log(arr)
-//     for(el of arr) {
-//         console.log(el)
-//         console.log(newArray)
-//         newArray.push(el + 10)
+// const elem4 = elem3.querySelector('p')
+// console.log(elem4)
 
-//     }
-//     return newArray
-    
-// }
+// console.log(elem4.textContent)
 
-// console.log(foo([1, 2, 3]))
+// elem4.textContent = 'Super text'
 
+// console.log(elem4.textContent)
 
-// const getSortedFriends = (users) => {
-//   let arr = [...users].flatMap((friend) => friend.friends);
-//   arr = arr.filter((friend, index) => arr.indexOf(friend) === index);
-//   arr = arr.sort((a, z) => a.localeCompare(z));
-//   return arr;
-// };
+// console.log(elem3.classList.contains('item1'))
+// console.log(elem3.classList.contains('superitem'))
 
-// const getSortedFriends = (users) =>
-//   users
-//     .flatMap(({ friends }) => friends)
-//     .filter((item, index, array) => array.indexOf(item) === index)
-//     .sort((a, b) => a.localeCompare(b));
+// // elem3.classList.add('superitem')
+// console.log(elem3.classList.contains('superitem'))
+// elem3.classList.remove('item1')
+// elem3.classList.toggle('superitem')
 
+// elem2.forEach(elem => elem.classList.add('item'))
+// elem2.forEach((elem) => elem.style.color = 'green');
+// elem4.style.color = 'red'
 
+// const img = document.querySelector('img')
+// img.setAttribute('alt', 'image')
+// img.alt = 'image'
+// console.log(img.getAttribute('src'))
+// console.log(img.attributes)
+// img.removeAttribute('src')
 
-//-------------1-----------------------------------
-// order(pizzaName, onSuccess, onError) {
-//   for (const pizza of this.pizzas) {
-//     if (pizzaName === pizza) {
-//       return onSuccess(pizzaName);
-//     }
-//   }
-//   return onError(
-//     `There is no pizza with a name ${pizzaName} in the assortment.`
-//   );
-// }
+// const btn = document.querySelector('[data-action="save"]')
+// // console.log(btn.dataset.action)
 
-// -------------2----------------------
-// order(pizzaName, onSuccess, onError) {
-//   if (this.pizzas.includes(pizzaName)) {
-//     return onSuccess(pizzaName);
-//   }
-//   return onError(
-//     `There is no pizza with a name ${pizzaName} in the assortment.`
-//   );
-// }
+// const title = document.createElement('h1');
+// const text = document.createElement('p');
 
+// console.log(title)
+// title.textContent = 'Hello'
+// title.style.backgroundColor = 'yellow'
 
-// const foo1 = () => {
-//     const a = 'js'
+// text.textContent = 'Test'
 
-//     const foo2 = () => {
-//         return a
-//     }
+// // const list = document.querySelector('ul')
 
-//     return foo2
-// }
+// // list.after(title, text)
 
-// // console.log(foo1())
+// text.remove()
 
-// const foo3 = foo1()
-// // console.log(foo3)
+// const span = document.createElement('span')
+// span.textContent = '!!!'
+// title.append(span)
 
-// console.log(foo3())
+// // console.log(title.innerHTML)
 
+// title.innerHTML = 'Hello!!!'
 
-// console.log({}._proto_)
+// const div = document.querySelector('.div')
+// console.log(div)
 
-// const x = [1, 2, 3].__proto__
-// const y = x.__proto__
-// console.log(y)
-// console.log(y.__proto__)
+// // div.innerHTML = '<p>1</p><p>2</p>'
+// div.innerHTML = ''
+// // div.innerHTML = "<p>1</p><p>2</p><p>3</p>";
 
-// class A {
-//     constructor(name) {
-//         this.name = name
-//     }
-// }
+// div.insertAdjacentHTML("afterbegin", "<p>1</p><p>2</p>");
+// div.insertAdjacentHTML('beforeend', '<p>3</p>')
 
-// const b = new A
-// console.log(b.__proto__)
+// const array = [{a: 1}, {a: 2}, {a: 3}]
 
-// const a = (b , c) => b + c
+// const markup = array.map(({a}) => `<li>${a}</li>`).join('')
 
-// const a = new Function('b', 'c', 'return b + c')
+// console.log(markup)
 
-// console.log(a(10, 30))
+// const list = document.querySelector('.list')
+
+// list.insertAdjacentHTML('afterbegin', markup)
+
+// FORBIDDEN !!!!!
+
+// const list = document.querySelector('.list')
+
+// array.forEach(({a}) => list.insertAdjacentHTML('beforeend', `<li>${a}</li>`))
+
+// const elements = array.map(({a}) => {
+//     const li = document.createElement('li')
+//     li.textContent = a
+//     return li
+// })
+
+// console.log(elements)
+
+// list.append(...elements)
+
+// FORBIDDEN !!!!!
+
+// const elements = array.forEach(({a}) => {
+//     const li = document.createElement('li')
+//     li.textContent = a
+//     // list.appendChild(li)
+//     list.append(li)
+// })

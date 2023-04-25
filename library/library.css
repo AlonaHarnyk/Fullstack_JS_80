@@ -1,0 +1,39 @@
+#root {
+  display: flex;  
+  height: 100vh;
+}
+
+.left {
+    width: 40%;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+.right {
+    width: 60%;
+    background-color: antiquewhite;
+    padding: 10px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add {
+    display: block;
+    margin: 0 auto;
+}
+
+.item {
+    display: flex;
+}
+
+.item-title {
+    margin-right: auto;
+}
+
+.delete {
+    margin-right: 10px;
+}
