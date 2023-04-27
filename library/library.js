@@ -55,20 +55,41 @@ const title = document.createElement("h1");
 title.textContent = "Library";
 
 const list = document.createElement("ul");
-list.classList.add('list')
+list.classList.add("list");
 
 const addBtn = document.createElement("button");
 addBtn.textContent = "Add";
-addBtn.classList.add('add')
+addBtn.classList.add("add");
 
 div1.append(title, list, addBtn);
 
 function renderList() {
-  const markup = books.map(
-    ({ id, title }) =>
-      `<li id='${id}' class='item'><p class='item-title'>${title}</p><button class='delete'>Delete</button><button class='edit'>Edit</button></button></li>`
-  ).join('')
-  list.insertAdjacentHTML('beforeend', markup)
+  const markup = books
+    .map(
+      ({ id, title }) =>
+        `<li id='${id}' class='item'><p class='item-title'>${title}</p><button class='delete'>Delete</button><button class='edit'>Edit</button></button></li>`
+    )
+    .join("");
+  list.insertAdjacentHTML("beforeend", markup);
+  const titles = document.querySelectorAll(".item-title");
+  titles.forEach((title) => title.addEventListener("click", renderPreview));
 }
 
-renderList()
+renderList();
+
+function renderPreview(e) {
+  const text = e.target.textContent;
+  const book = books.find(({ title }) => title === text);
+  const markup = createPreviewMarkup(book);
+  div2.innerHTML = ''
+  div2.insertAdjacentHTML("afterbegin", markup);
+}
+
+function createPreviewMarkup({ id, title, author, img, plot }) {
+  return `<div data-id=${id}>
+  <h2>${title}</h2>
+  <p>${author}</p>
+  <img src='${img}' alt='${title}'>
+  <p>${plot}</p>
+  </div>`;
+}
