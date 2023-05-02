@@ -1,35 +1,40 @@
-// const div = document.querySelector("div");
-// div.addEventListener("click", (e) => {
-//   console.log(e);
-// });
+const list = document.querySelector("ul");
+const modalText = document.querySelector(".modal-text");
+const backdrop = document.querySelector(".backdrop");
+const button = document.querySelector("button");
 
-// const link = document.querySelector("a");
-// link.addEventListener("click", (e) => {
-//   e.preventDefault();
-// });
+list.addEventListener("click", openModal);
 
-// link.addEventListener("click", clickHandler);
-// function clickHandler(e) {
-//   e.preventDefault();
-// }
+function openModal({ target }) {
+  let content;
+  if (target.nodeName === "P") {
+    content = target.textContent;
+  } else if (target.nodeName === "LI") {
+    content = target.firstElementChild.textContent;
+  } else {
+    return;
+  }
+  modalText.textContent = content;
+  backdrop.classList.add("open");
+  window.addEventListener("keydown", closeByEsc);
+}
 
-// document.addEventListener("keydown", (event) => {
-//   if (event.code === "Escape") {
-//     console.log("here");
-//   }
-// });
+button.addEventListener("click", closeModal);
+backdrop.addEventListener('click', (event) => {
+  if(event.target === event.currentTarget) {
+    closeModal()
+  }
+})
 
-// const input = document.querySelector('input')
-// input.addEventListener('focus', (e) => {
-//     console.log(e.target.value)
-// })
+function closeModal() {
+  backdrop.classList.remove("open");
+  modalText.textContent = "";
+  window.removeEventListener("keydown", closeByEsc);
+}
 
-const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const data = {
-    login: e.target.elements.login.value,
-    password: e.target.elements.password.value,
-  };
-    console.log(data)
-});
+function closeByEsc({ code }) {
+  if (code === "Escape") {
+    closeModal();
+  }
+}
+

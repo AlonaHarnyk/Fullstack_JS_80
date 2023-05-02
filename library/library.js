@@ -71,17 +71,22 @@ function renderList() {
     )
     .join("");
   list.insertAdjacentHTML("beforeend", markup);
-  const titles = document.querySelectorAll(".item-title");
-  titles.forEach((title) => title.addEventListener("click", renderPreview));
+  const items = document.querySelectorAll(".item");
+  items.forEach((item) => item.addEventListener("click", itemClickHandler));
 }
 
 renderList();
 
-function renderPreview(e) {
-  const text = e.target.textContent;
+function itemClickHandler(event) {
+  if (event.target.nodeName === "P") {
+    renderPreview(event.target.textContent);
+  }
+}
+
+function renderPreview(text) {
   const book = books.find(({ title }) => title === text);
   const markup = createPreviewMarkup(book);
-  div2.innerHTML = ''
+  div2.innerHTML = "";
   div2.insertAdjacentHTML("afterbegin", markup);
 }
 

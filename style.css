@@ -1,0 +1,61 @@
+
+ 
+
+ul {
+    width: 1170px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: aqua;
+    padding-left: 0;
+    list-style: none;
+    margin: 0 auto;
+  }
+  
+  li {
+    width: 370px;
+    height: 370px;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  p {
+    font-size: 44px;
+  }
+  
+  .backdrop {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: brown;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+  }
+  
+  .modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+  }
