@@ -1,4 +1,4 @@
-let books = [
+const data = [
   {
     id: "1",
     title: `Apple. Computer evolution`,
@@ -39,6 +39,8 @@ let books = [
   },
 ];
 
+localStorage.setItem("books", JSON.stringify(data));
+
 const root = document.getElementById("root");
 // const root = document.querySelector('#root')
 // console.log(root)
@@ -64,6 +66,8 @@ addBtn.classList.add("add");
 div1.append(title, list, addBtn);
 
 function renderList() {
+  const books = JSON.parse(localStorage.getItem("books"));
+  console.log(books);
   const markup = books
     .map(
       ({ id, title }) =>
@@ -88,6 +92,7 @@ function itemClickHandler(event) {
 }
 
 function renderPreview(text) {
+  const books = JSON.parse(localStorage.getItem("books"));
   const book = books.find(({ title }) => title === text);
   const markup = createPreviewMarkup(book);
   div2.innerHTML = "";
@@ -104,7 +109,9 @@ function createPreviewMarkup({ id, title, author, img, plot }) {
 }
 
 function deleteBook(bookId) {
-  books = books.filter(({ id }) => id !== bookId);
+  const books = JSON.parse(localStorage.getItem("books"));
+  const newBooks = books.filter(({ id }) => id !== bookId);
+  localStorage.setItem("books", JSON.stringify(newBooks));
   renderList();
   const preview = document.querySelector(".preview");
   // if (preview) {
@@ -115,4 +122,42 @@ function deleteBook(bookId) {
   if (preview && bookId === preview.dataset.id) {
     div2.innerHTML = "";
   }
+}
+
+addBtn.addEventListener("click", addBook);
+
+function addBook() {
+  const newBook = {
+    id: `${Date.now()}`,
+    title: "",
+    author: "",
+    plot: "",
+    img: "",
+  };
+  div2.innerHTML = createFormMarkup();
+  fillBookObject(newBook);
+  const form = document.querySelector("form");
+  console.log(form);
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (Object.values(newBook).some((value) => value === "".trim())) {
+      alert("Fill all fields, please!");
+      return
+    }
+
+    console.log(newBook);
+  });
+}
+
+function createFormMarkup() {
+  return `<form><label>Title: <input type='text' name='title'></label><label>Author: <input type='text' name='author'></label><label>Image: <input type='url' name='img'></label><label>Plot: <input type='text' name='plot'></label><button type='submit'>Save</button></form>`;
+}
+
+function fillBookObject(book) {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) =>
+    input.addEventListener("input", ({ target: { name, value } }) => {
+      book[name] = value;
+    })
+  );
 }

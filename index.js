@@ -1,15 +1,24 @@
-const input = document.querySelector(".lodash");
+// try {
+//   console.log(b)
+// } catch (error) {
+//   console.log(error.message)
+// }
 
-// input.addEventListener("input", _.throttle(inputHandler, 500));
-input.addEventListener(
-  "input",
-  _.debounce(inputHandler, 500, {
-    leading: true,
-    trailing: true,
-  })
-);
+// const b = 10
 
-function inputHandler({ target: { value } }) {
-  console.log("here");
-  console.log("value", value);
-}
+// console.log(11111)
+
+// localStorage.setItem('theme', {a:1, b:2})
+// const res = localStorage.getItem('theme')
+// console.log(res)
+const data = JSON.stringify({a:1, b:2})
+localStorage.setItem('theme',data )
+const res = JSON.parse(localStorage.getItem('theme'))
+// console.log(res)
+// console.log()
+
+localStorage.setItem('token', 'qnergohwir894785tgoilkadjsiDHAsxbfdnglkr' )
+
+// localStorage.removeItem('token')
+
+// localStorage.clear()
