@@ -1,101 +1,148 @@
-// Write a function which returns a day number that was some amount of days ago from the passed date.
+// // Напиши функцію delay(ms), яка повертає проміс, що переходить в стан "resolved" через ms мілісекунд.
+// //  Значенням промісу, яке виповнилося має бути та кількість мілісекунд, яку передали під час виклику функції delay.
 
-// const getPastDay = (date, days) => {
-//   const MS_PER_DAY = 1000 * 60 * 60 * 24;
-//   const msPerDays = MS_PER_DAY * days;
-//   const pastDate = date - msPerDays;
-//   return new Date(pastDate).getDate()
+// const delay = (ms) => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(ms);
+//     }, ms);
+//   });
 // };
 
-// const date = new Date(2022, 0, 2);
-// console.log(getPastDay(date, 1)); // 1, (1 Jan 2022)
-// console.log(getPastDay(date, 2)); // 31, (31 Dec 2021)
-// console.log(getPastDay(date, 365)); // 2, (2 Jan 2021)
+// const logger = time => console.log(`Resolved after ${time}ms`);
 
-// // Write a function that formats a date in such format "YYYY/MM/DD HH:mm".
+// // Виклик функції для перевірки
+// delay(2000).then(a => logger(a)); // Resolved after 2000ms
+// delay(1000).then(b => logger(b)); // Resolved after 1000ms
+// delay(1500).then(logger); // Resolved after 1500ms
 
-// const formatDate = (date) => {
-//   const year = date.getFullYear();
-//   const month = String(date.getMonth() + 1).padStart(2, "0");
-//   const days = String(date.getDate()).padStart(2, "0");
-//   const hours = String(date.getHours()).padStart(2, "0");
-//   const minutes = String(date.getMinutes()).padStart(2, "0");
-//   return `${year}/${month}/${days} ${hours}:${minutes}`;
+// // Перепиши функцію toggleUserState() так, щоб вона не використовувала callback-функцію callback, а приймала
+// // всього два параметри allUsers і userName і повертала проміс.
+
+// const users = [
+//   { name: 'Mango', active: true },
+//   { name: 'Poly', active: false },
+//   { name: 'Ajax', active: true },
+//   { name: 'Lux', active: false },
+// ];
+
+// const toggleUserState = (allUsers, userName, callback) => {
+//   const updatedUsers = allUsers.map(user =>
+//     user.name === userName ? { ...user, active: !user.active } : user,
+//   );
+
+//   callback(updatedUsers);
 // };
 
-// console.log(formatDate(new Date("6/15/2019 09:15:00"))); // "2019/06/15 09:15"
-// console.log(formatDate(new Date())); // gets current local time
+// const logger = updatedUsers => console.table(updatedUsers);
 
-// console.log(11111)
+// // /*
+// //  * Зараз працює так
+// //  */
+// toggleUserState(users, 'Mango', logger);
+// toggleUserState(users, 'Lux', logger);
 
-// const sum = (a, b) => {
-//     console.log(a + b)
-// }
+// const users = [
+//   { name: "Mango", active: true },
+//   { name: "Poly", active: false },
+//   { name: "Ajax", active: true },
+//   { name: "Lux", active: false },
+// ];
 
-// const timerId = setTimeout(sum, 0, 10, 100)
+// const toggleUserState = (allUsers, userName) => {
+//   const updatedUsers = allUsers.map((user) =>
+//     user.name === userName ? { ...user, active: !user.active } : user
+//   );
 
-// console.log(22222)
+  // I
+  // return new Promise((res) => {
+  //   res(updatedUsers);
+  // });
 
-// clearTimeout(timerId);
+  // II
+  // return Promise.resolve(updatedUsers)
+};
 
-// const timerId = setInterval(sum, 2000, 10, 100)
+// const logger = (updatedUsers) => console.table(updatedUsers);
 
-// setTimeout(() => {
-//     clearInterval(timerId)
-// }, 10000)
+// /*
+//  * Повинно працювати так
+//  */
+// toggleUserState(users, "Mango").then((data) => logger(data));
+// toggleUserState(users, "Lux").then(logger);
 
-class CountDownTimer {
-  constructor({ selector, targetDate }) {
-    this.targetDate = targetDate;
-    this.daysSpan = document.querySelector(`${selector} [data-value="days"]`);
-    this.hoursSpan = document.querySelector(`${selector} [data-value="hours"]`);
-    this.minsSpan = document.querySelector(`${selector} [data-value="mins"]`);
-    this.secsSpan = document.querySelector(`${selector} [data-value="secs"]`);
-    this.updateMarkup()
-  }
+// Перепиши функцію makeTransaction() так, щоб вона не використовувала callback-функції onSuccess і onError,
+// а приймала всього один параметр transaction і повертала проміс.
 
-  updateMarkup() {
-    setInterval(() => {
-      const currentTime = Date.now();
-      const delta = this.targetDate - currentTime;
-      const { days, hours, minutes, seconds } = this.convertMs(delta);
-      this.daysSpan.textContent = days;
-      this.hoursSpan.textContent = hours;
-      this.minsSpan.textContent = minutes;
-      this.secsSpan.textContent = seconds;
-    }, 1000);
-  }
+// const randomIntegerFromInterval = (min, max) => {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// };
 
-  convertMs(ms) {
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
+// const makeTransaction = (transaction, onSuccess, onError) => {
+//   const delay = randomIntegerFromInterval(200, 500);
 
-    const days = Math.floor(ms / day);
-    const hours = Math.floor((ms % day) / hour);
-    const minutes = Math.floor(((ms % day) % hour) / minute);
-    const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+//   setTimeout(() => {
+//     const canProcess = Math.random() > 0.3;
 
-    return { days, hours, minutes, seconds };
-  }
-}
+//     if (canProcess) {
+//       onSuccess(transaction.id, delay);
+//     } else {
+//       onError(transaction.id);
+//     }
+//   }, delay);
+// };
 
-const timer1 = new CountDownTimer({
-  selector: "#timer-1",
-  targetDate: new Date("Jan 1, 2024"),
-});
+// const logSuccess = (id, time) => {
+//   console.log(`Transaction ${id} processed in ${time}ms`);
+// };
 
-const timer2 = new CountDownTimer({
-  selector: "#timer-2",
-  targetDate: new Date("Jan 1, 2025"),
-});
+// const logError = id => {
+//   console.warn(`Error processing transaction ${id}. Please try again later.`);
+// };
 
-const timer3 = new CountDownTimer({
-  selector: "#timer-3",
-  targetDate: new Date("Sep 1, 2023"),
-});
+// // /*
+// //  * Працює так
+// //  */
+// makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);
+// makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);
+// makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);
+// makeTransaction({ id: 73, amount: 100 }, logSuccess, logError);
 
-// timer1.updateMarkup();
-// timer2.updateMarkup();
-// timer3.updateMarkup();
+// const randomIntegerFromInterval = (min, max) => {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// };
+
+// const makeTransaction = (transaction) => {
+//   const delay = randomIntegerFromInterval(200, 500);
+
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const canProcess = Math.random() > 0.3;
+
+//       if (canProcess) {
+//         resolve([transaction.id, delay]);
+//       } else {
+//         reject(transaction.id);
+//       }
+//     }, delay);
+//   });
+// };
+
+// const logSuccess = (array) => {
+//   console.log(`Transaction ${array[0]} processed in ${array[1]}ms`);
+// };
+
+// const logError = (id) => {
+//   console.warn(`Error processing transaction ${id}. Please try again later.`);
+// };
+
+// /*
+//  * Повинно працювати так
+//  */
+// makeTransaction({ id: 70, amount: 150 }).then(logSuccess).catch(logError);
+
+// makeTransaction({ id: 71, amount: 230 }).then(logSuccess).catch(logError);
+
+// makeTransaction({ id: 72, amount: 75 }).then(logSuccess).catch(logError);
+
+// makeTransaction({ id: 73, amount: 100 }).then(logSuccess).catch(logError);
