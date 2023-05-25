@@ -1,21 +1,12 @@
-/* .gallery {
-  display: grid;
-  width: 400px;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-auto-rows: 240px;
-  grid-gap: 12px;
-  padding: 0;
-  list-style: none;
-  margin-left: auto;
-  margin-right: auto;
+.unvisible {
+  display: none;
 }
 
-
-
-
-.gallery__image {
-  height: 100%;
-  width: 400px;
-  object-fit: cover;
-  transition: transform 200ms ease-in-out;
-} */
+.list {
+  width: 1600px;
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 370px);
+  gap: 30px;
+  margin: 0 auto;
+}
