@@ -5,20 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <form>
-      <label>
-        Search event:
-        <input type="text" name="query" />
-        <button>Search</button>
-      </label>
-    </form>
+    <button type="button" class="fetch">Show users</button>
+    <h1 class="loader">LOADING...</h1>
     <ul class="list"></ul>
-    <!-- <div class="guard"></div> -->
-    <p class="loader unvisible">LOADING...</p>
-    <button class="more unvisible">Load more</button>
+    <button type="button" class="add">Add user</button>
+    <div class="form-wrapper"></div>
     <script src="./index.js" type="module"></script>
   </body>
 </html>
