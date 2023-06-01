@@ -5,13 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <button type="button" class="fetch">Show users</button>
-    <h1 class="loader">LOADING...</h1>
+    <form>
+      <label>
+        Search event:
+        <input type="text" name="query" />
+        <button>Search</button>
+      </label>
+    </form>
     <ul class="list"></ul>
-    <button type="button" class="add">Add user</button>
-    <div class="form-wrapper"></div>
+    <div class="guard"></div>
+    <p class="loader unvisible">LOADING...</p>
+    <!-- <button class="more unvisible">Load more</button> -->
+    <script src="
+    https://cdn.jsdelivr.net/npm/axios@1.3.3/dist/axios.min.js
+    "></script>
     <script src="./index.js" type="module"></script>
   </body>
 </html>
